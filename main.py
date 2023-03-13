@@ -20,6 +20,8 @@ action = ("What movement would you like yo do? The only option in this room is w
 walk = ("Walking!")
 ballroomMessage = ("You are currently in the Grand Ball Room. ")
 closetMessage = ("You are currently in the Closet. ")
+bedroomMessage = ("You are currently in the Master Bedroom. ")
+rooftopMessage = ("You are currently at the Rooftop of this mansion. ")
 endingMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
 
 def movements():
@@ -52,6 +54,16 @@ elif current_location == "Grand Ball Room":
   movements()
 elif current_location == "Closet":
   print(closetMessage)
+  print(input(action))
+  print(walk)
+  movements()
+elif current_location == "Master Bedroom":
+  print(bedroomMessage)
+  print(input(action))
+  print(walk)
+  movements()
+elif current_location == "Rooftop":
+  print(rooftopMessage)
   print(input(action))
   print(walk)
   movements()
