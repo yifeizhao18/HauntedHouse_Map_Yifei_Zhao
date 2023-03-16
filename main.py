@@ -9,6 +9,9 @@
 ###############################################################################################
 """
 This program creates a map. 
+The user should not be able to walk off the map.
+When the user is in a room, there will be a message printed to the console. 
+The user will be able to choose which direction to go. 
 """
 # Global Variables & Imports
 row = 2
@@ -38,6 +41,7 @@ bedroomMessage = ("You are currently in the Master Bedroom. ")
 rooftopMessage = ("You are currently at the Rooftop of this mansion. ")
 bathroomMessage = ("You are currently in the Bathroom. The room of slaughter. ")
 wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
+wrongSpelling = ("Please only answer yes or no. No capital letters. ")
 endingMessage = ("Thank you for playing. Bye! ")
 
 def movements():
@@ -67,8 +71,18 @@ def mainChoice():
     print('\n')
     input(action)
   print('\n')
-  movements()
+  quitOption = input("Do you still want to play? ")
   print('\n')
+  if quitOption == "yes":
+    movements()
+    print('\n')
+  elif quitOption == "no":
+    print(endingMessage)
+    print('\n')
+    break
+  else:
+    print(wrongSpelling)
+    
   
 # Main
 while True: 
