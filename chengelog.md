@@ -7,6 +7,7 @@ v1.0
 Name: RPG - MAP
 added - global vatiables - row and col
 added - map - nested lists
+added - function for movements 
 added - contiuous play
 added - "walk" as a main menu option
 added - movement() function
