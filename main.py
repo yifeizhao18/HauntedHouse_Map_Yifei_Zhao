@@ -1,4 +1,4 @@
-################################################################################################
+###############################################################################################
 # Title: Data Structures: RPG - Map
 
 # Class: Computer Science 30 P1 S2                                                                                                                   
@@ -6,8 +6,10 @@
 
 # Coder's Name: Yifei Zhao                                                                                                            
 # Version: 001                                                                                        
-################################################################################################
-
+###############################################################################################
+"""
+This program creates a map. 
+"""
 # Global Variables & Imports
 row = 2
 col = 2
@@ -20,6 +22,8 @@ HauntedMansion = [
   ["Master Bedroom", "Closet", "Rooftop", "Bathroom"],
   ["Rooftop", "Master Bedroom", "Grand Ball Room", "Exit"]
 ]
+
+actionChoice = ["walk"]
 
 directions = ["South", "North", "East", "West"]
 
@@ -38,77 +42,54 @@ endingMessage = ("Thank you for playing. Bye! ")
 
 def movements():
   global row, col
-  print(input(askDirection))
+  movementChoice = (input(askDirection))
+  print('\n')
   print(answer)
-  if askDirection == "South":
-    row -= 1
-  elif askDirection == "North":
+  if movementChoice == "South":
     row += 1
-  elif askDirection == "East":
+  elif movementChoice == "North":
+    row -= 1
+  elif movementChoice == "East":
     col += 1
-  elif askDirection == "West":
+  elif movementChoice == "West":
     col -= 1
   else:
     print(wrongMessage)
+
+
+def mainChoice():
+  actionChoice = (input(action))
+  print('\n')
+  if actionChoice == "walk":
+    print(walk)
+  else:
+    print("walk is the only option right now! No capital letters!")
+    print('\n')
+    input(action)
+  print('\n')
+  movements()
+  print('\n')
   
 # Main
-global current_location
-current_location = HauntedMansion[row][col]
-
 while True: 
+  current_location = HauntedMansion[row][col]
   if current_location == "Entrance":
     print(welcomeMessage)
-    print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
     print('\n')
   elif current_location == "Grand Ball Room":
     print(ballroomMessage)
     print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
-    print('\n')
   elif current_location == "Closet":
     print(closetMessage)
-    print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
     print('\n')
   elif current_location == "Master Bedroom":
     print(bedroomMessage)
     print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
-    print('\n')
   elif current_location == "Rooftop":
     print(rooftopMessage)
     print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
-    print('\n')
   elif current_location == "Bathroom":
     print(bathroomMessage)
-    print('\n')
-    print(input(action))
-    print('\n')
-    print(walk)
-    print('\n')
-    movements()
     print('\n')
   elif current_location == "Exit":
     print(endingMessage)
@@ -116,3 +97,5 @@ while True:
   else:
     print(wrongMessage)
     print('\n')
+  # Main Menu
+  mainChoice()
