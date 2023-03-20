@@ -1,4 +1,4 @@
-###############################################################################################
+###############################################################################
 # Title: Data Structures: RPG - Map
 
 # Class: Computer Science 30 P1 S2                                                                                                                   
@@ -6,7 +6,7 @@
 
 # Coder's Name: Yifei Zhao                                                                                                            
 # Version: 001                                                                                        
-###############################################################################################
+###############################################################################
 """
 This program creates a map. 
 The user should not be able to walk off the map.
@@ -14,8 +14,10 @@ When the user is in a room, there will be a message printed to the console.
 The user will be able to choose which direction to go. 
 """
 # Global Variables & Imports
+import sys
 row = 2
 col = 2
+
 
 # Functions
 HauntedMansion = [
@@ -49,17 +51,37 @@ def movements():
   movementChoice = (input(askDirection))
   print('\n')
   print(answer)
-  if movementChoice == "South":
-    row += 1
-  elif movementChoice == "North":
-    row -= 1
-  elif movementChoice == "East":
-    col += 1
+  print('\n')
+  if movementChoice == "North":
+    if row == 0:
+      print("You have ran into a wall. ")
+      print('\n')
+      print("Please type in another direction. ")
+    else:
+      row -= 1
+  elif movementChoice == "South":
+    if row == 3:
+      print("You have ran into a wall. ")
+      print('\n')
+      print("Please type in another direction. ")
+    else:
+      row += 1
   elif movementChoice == "West":
-    col -= 1
+    if col == 0:
+      print("You have ran into a wall. ")
+      print('\n')
+      print("Please type in another direction. ")
+    else:
+      col -= 1
+  elif movementChoice == "East": 
+    if col == 3:
+      print("You have ran into a wall. ")
+      print('\n')
+      print("Please type in another direction. ")
+    else: 
+      col += 1
   else:
     print(wrongMessage)
-
 
 def mainChoice():
   actionChoice = (input(action))
@@ -78,10 +100,10 @@ def mainChoice():
     print('\n')
   elif quitOption == "no":
     print(endingMessage)
-    print('\n')
-    break
+    sys.exit() 
   else:
     print(wrongSpelling)
+
     
   
 # Main
