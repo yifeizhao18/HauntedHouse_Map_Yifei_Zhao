@@ -1,11 +1,11 @@
 ###############################################################################
-# Title: Data Structures: RPG - Map
+# Title: Data Structures: RPG - Inventory
 
 # Class: Computer Science 30 P1 S2                                                                                                                   
 # Date: March 13, 2023
 
 # Coder's Name: Yifei Zhao                                                                                                            
-# Version: 001                                                                                        
+# Version: 002                                                                                        
 ###############################################################################
 """
 This program creates a map. 
@@ -31,6 +31,16 @@ HauntedMansion = [
 
 # list for the possible action choice 
 actionChoice = ["walk"]
+
+roomsHauntedMansion = {
+  "Entrance" : "Welcome To The Haunted House! You are currently at the Entrance. ",
+  "Grand Ball Room" : "You are currently in the Grand Ball Room. ",
+  "Closet" : "You are currently in the Closet. ",
+  "Master Bedroom" : "You are currently in the Master Bedroom. ",
+  "Rooftop" : "You are currently at the Rooftop of this mansion. ",
+  "Bathroom" : "You are currently in the Bathroom. The room of slaughter. ",
+  "Exit" : "Thank you for playing. Bye! "
+}
 
 # messages to be printed on the console when the user is in that specific room
 welcomeMessage = ("Welcome To The Haunted House! You are currently at the Entrance. ")

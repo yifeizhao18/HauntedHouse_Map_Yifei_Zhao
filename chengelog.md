@@ -15,7 +15,7 @@ added - contiuous play
 added - messages to be printed to the console for the rooms
 fixed - main code 
 added - function for mainChoice
-fixed - movement so player can not walk off "map"
+fixed - movement() so player can not walk off "map"
 
 
 v2.0
