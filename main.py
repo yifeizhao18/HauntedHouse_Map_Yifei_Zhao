@@ -71,7 +71,7 @@ def movements():
   # if the user put in South, do the following
   elif movementChoice == "South":
     # makes sure the user stays in the map
-    if row == 3:
+    if row == 4:
       print("You have ran into a wall. ")
       print('\n')
       print("Please type in another direction. ")
