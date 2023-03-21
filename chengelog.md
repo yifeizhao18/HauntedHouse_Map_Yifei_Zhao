@@ -17,6 +17,7 @@ fixed - main code
 added - function for mainChoice
 fixed - movement so player can not walk off "map"
 
+
 v2.0
 Name: RPG: _______________
 update - games name

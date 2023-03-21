@@ -18,7 +18,6 @@ import sys
 row = 2
 col = 2
 
-
 # Functions
 
 # map for the HauntedMansion 
@@ -47,6 +46,7 @@ bathroomMessage = ("You are currently in the Bathroom. The room of slaughter. ")
 wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
 wrongSpelling = ("Please only answer yes or no. No capital letters. ")
 endingMessage = ("Thank you for playing. Bye! ")
+
 
 def movements():
   """
@@ -99,6 +99,7 @@ def movements():
   else:
     print(wrongMessage)
 
+
 def mainChoice():
   """
   function for mainChoice
@@ -130,8 +131,7 @@ def mainChoice():
   else:
     print(wrongSpelling)
 
-    
-  
+      
 # Main
 while True: 
   current_location = HauntedMansion[row][col]
