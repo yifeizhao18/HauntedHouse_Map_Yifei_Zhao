@@ -29,18 +29,77 @@ HauntedMansion = [
   ["Rooftop", "Master Bedroom", "Grand Ball Room", "Exit"]
 ]
 
-# list for the possible action choice 
-actionChoice = ["walk"]
-
-roomsHauntedMansion = {
-  "Entrance" : "Welcome To The Haunted House! You are currently at the Entrance. ",
-  "Grand Ball Room" : "You are currently in the Grand Ball Room. ",
-  "Closet" : "You are currently in the Closet. ",
-  "Master Bedroom" : "You are currently in the Master Bedroom. ",
-  "Rooftop" : "You are currently at the Rooftop of this mansion. ",
-  "Bathroom" : "You are currently in the Bathroom. The room of slaughter. ",
-  "Exit" : "Thank you for playing. Bye! "
+# dictionary for actions 
+actionChoice = {
+  "walk" : "Currently Walking Around!",
+  "search" : "Searching For Possible Keys!",
+  "collect" : "Collecting Keys Into The Inventory",
+  "heal" : "Healing With Medicine!"
 }
+
+# dictionary for the objects
+objectChoice = {
+  "Treasure Box" : {
+    "description" : "The user will be able to find the key that will lead them out of the room. ",
+  },
+  "Medicine" : {
+    "description" : "The user will be able to find medicine to heal themselves. ",
+    
+  },
+  "Food" : {
+    "description" : "The user will be able to find food to gain energy. ",
+    
+  },
+}
+
+# dictionary for the map-tile
+roomsHauntedMansion = {
+  "Entrance" : {
+    "description" : "Welcome To The Haunted House! You are currently at the Entrance. ",
+    "location" : "(2,2)",
+    "num_treasure" : "0", 
+    "num_med" : "3"
+  }, 
+  "Grand Ball Room" : {
+    "description" : "You are currently in the Grand Ball Room. ",
+    "location" : ["(0,0)", "(0,2)", "(2,4)"],
+    "num_treasure" : "1",
+    "num_med" : "2,"
+  },
+  "Closet" : {
+    "description" : "You are currently in the Closet. ",
+    "location" : ["(0,1)", "(3,1)", "(1,3)"],
+    "num_treasure" : "1",
+    "num_med" : "3",
+  },
+  "Master Bedroom" : {
+    "description" : "You are currently in the Master Bedroom. ",
+    "location" : ["(1,0)", "(3,0)","(1,3)"],
+    "num_treasure" : "2",
+    "num_med" : "2",
+  },
+  "Rooftop" : {
+    "description" : "You are currently at the Rooftop of this mansion. ",
+    "location" : ["(2,1)", "(2,3)", "(0,4)"],
+    "num_treasure" : "1",
+    "num_med" : "2",
+  },
+  "Bathroom" : {
+    "description" : "You are currently in the Bathroom. The room of slaughter. ",
+    "location" : ["(2,0)", "(1,2)", "(3,2)", "(3,3)"],
+    "num_treasure" : "3",
+    "num_med" : "2",
+  },
+  "Exit" : {
+    "description" : "Thank you for playing. Bye! ",
+    "location" : "(3,4)",
+    "num_treasure" : "1",
+    "num_med" : "1",
+  }
+}
+
+# empty list for inventory
+Inventory = []
 
 # messages to be printed on the console when the user is in that specific room
 welcomeMessage = ("Welcome To The Haunted House! You are currently at the Entrance. ")
@@ -56,6 +115,9 @@ bathroomMessage = ("You are currently in the Bathroom. The room of slaughter. ")
 wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
 wrongSpelling = ("Please only answer yes or no. No capital letters. ")
 endingMessage = ("Thank you for playing. Bye! ")
+
+
+
 
 
 def movements():

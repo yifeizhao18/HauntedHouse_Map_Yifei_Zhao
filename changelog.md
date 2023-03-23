@@ -19,10 +19,12 @@ fixed - movement() so player can not walk off "map"
 
 
 v2.0
-Name: RPG: _______________
+Name: RPG: Haunted Mansion
 update - games name
+fixed - changelog name
+add - a dictionary to hold map-tile information (add description strings)
+add - a dictionary to hole action information 
 *add - change log
-*add - a dictionary to hold map-tile information (add description strings)
 *fix - how room descriptions print in the game
 *add - another dictionary (for a character or object)
 *add - empty inventory list
