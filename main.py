@@ -13,6 +13,7 @@ The user should not be able to walk off the map.
 When the user is in a room, there will be a message printed to the console. 
 The user will be able to choose which direction to go. 
 """
+
 # Global Variables & Imports
 import sys
 row = 2
@@ -31,10 +32,15 @@ HauntedMansion = [
 
 # dictionary for actions 
 actionChoice = {
-  "walk" : "Currently Walking Around!",
-  "search" : "Searching For Possible Keys!",
-  "collect" : "Collecting Keys Into The Inventory",
-  "heal" : "Healing With Medicine!"
+  "walk" : {
+    "message" : "Currently Walking Around!"
+  },
+  "search" : {
+    "message" : "Searching For Possible Keys!"
+  },
+  "quit" : {
+    "message" : "Thank you for playing. Bye!"
+  }
 }
 
 # dictionary for characters
@@ -54,81 +60,77 @@ possibleCharacter = {
 }
 
 # dictionary for the objects
-objectChoice = {
-  "Treasure Box" : {
-    "description" : "The user will be able to find the key that will lead them out of the room. ",
-    "possibleItems" : "["knife", "sword", "key", "flashlight"]"
-    
-  },
-  "Medicine" : {
-    "description" : "The user will be able to find medicine to heal themselves. ",
-    
-  },
-  "Food" : {
-    "description" : "The user will be able to find food to gain energy. ",
-    
-  },
-}
+# treasureBox: {
+#   "Medicine" : {
+#     "description" : "The user will be able to find medicine to heal themselves from the possible attacks from the ghosts. ",
+#     "possibleItems" : "["bandages", "pills"]",
+#     "bandages" : "This can help with the minimum attack. ",
+#     "pills" : "This can help with stronger attacks. ",
+#   },
+#   "Food" : {
+#     "description" : "The user will be able to find food to gain energy. ",
+#     "possibleItems" : ["water", "foods", "snacks"],
+#     "water" : "This can help with dehydration, but you cannot gain a lot of energy. ",
+#     "foods" : "This can help you gain a lot of energy to keep exploring the house. ",
+#     "snacks" : "This can help you gain some energy. ",
+#   },
+#   "KeyItems" : {
+#     "description" : "The user will be able to find items that are very important in survivng. ",
+#     "possibleItems" : ["knife", "sword", "flashlight"],
+#     "knife" : "This can help you fight ghost2. ",
+#     "sword" : "This can help you fight ghost3. ",
+#     "flashlight" : "This can help you fight ghost1. "
+#   }
+# }
+treasureBox = ["knife", "sword", "flashlight", "food", "medicine"]
 
 # dictionary for the map-tile
 roomsHauntedMansion = {
   "Entrance" : {
     "description" : "Welcome To The Haunted House! You are currently at the Entrance. Your goal is to escape this mansion before you die. ",
     "num_treasure" : "0", 
-    "num_med" : "3"
   }, 
   "Grand Ball Room" : {
     "description" : "You are currently in the Grand Ball Room. This is the largest room in this house, maybe you want to explore it. BE CAREFUL!! ",
     "num_treasure" : "1",
-    "num_med" : "2,"
   },
   "Closet" : {
     "description" : "You are currently in the Closet. This is the smallest room in this house. All of the clothes in the closet... What can I find here? ",
     "num_treasure" : "1",
-    "num_med" : "3",
   },
   "Master Bedroom" : {
     "description" : "You are currently in the Master Bedroom. This is where the previous couples stayed before they were never seen ever again... ",
     "num_treasure" : "2",
-    "num_med" : "2",
   },
   "Rooftop" : {
     "description" : "You are currently at the Rooftop of this mansion. This is the highest place of this mansion. Be careful NOT to fall down... ",
     "num_treasure" : "1",
-    "num_med" : "2",
   },
   "Bathroom" : {
     "description" : "You are currently in the Bathroom. The room of slaughter. Be careful NOT to be the next one... ",
     "num_treasure" : "3",
-    "num_med" : "2",
   },
   "Exit" : {
     "description" : "Thank you for playing. Bye! ",
     "num_treasure" : "1",
-    "num_med" : "1",
   }
 }
 
 # empty list for inventory
+actionPossible = ["walk", "search", "quit"]
 Inventory = []
+Food = []
+Heal = []
+Weapon = []
 
 # messages to be printed on the console when the user is in that specific room
-welcomeMessage = ("Welcome To The Haunted House! You are currently at the Entrance. ")
 askDirection = ("Do you want to go South, North, East, or West now? ")
 answer = ("Sounds good! ")
-action = ("What movement would you like to do? The only option in this room is walk. ")
+action = ("What movement would you like to do? ")
 walk = ("Walking! ")
-ballroomMessage = ("You are currently in the Grand Ball Room. ")
-closetMessage = ("You are currently in the Closet. ")
-bedroomMessage = ("You are currently in the Master Bedroom. ")
-rooftopMessage = ("You are currently at the Rooftop of this mansion. ")
-bathroomMessage = ("You are currently in the Bathroom. The room of slaughter. ")
 wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
 wrongSpelling = ("Please only answer yes or no. No capital letters. ")
 endingMessage = ("Thank you for playing. Bye! ")
-
-
-
 
 
 def movements():
@@ -188,63 +190,58 @@ def mainChoice():
   function for mainChoice
   this function will asks for the user's action 
   """
-  actionChoice = (input(action))
+  print("Possible actions: ")
+  for option in actionPossible:
+    print(f"- {option}")
+  actionChoice2 = (input(action))
   print('\n')
   # if the user chose walk as their action, do the following
-  if actionChoice == "walk":
-    print(walk)
+  if actionChoice2 == "walk":
+    print(actionChoice["walk"]["message"])
+  # if the user chose search as their action, do the following
+  elif actionChoice2 == "search":
+    print(actionChoice["search"]["message"])
+  elif actionChoice2 == "quit":
+    print(actionChoice["quit"]["message"])
+    sys.exit()
   # if the user chose none of the above, do the following
   else:
     print("walk is the only option right now! No capital letters!")
     print('\n')
     input(action)
   print('\n')
-  # asks if the user still wants to stay in the game
-  quitOption = input("Do you still want to play? ")
-  print('\n')
-  # if the user wants to stay in the game, do the following
-  if quitOption == "yes":
-    movements()
-    print('\n')
-  # if the user does not want to stay in the game, do the following
-  elif quitOption == "no":
-    print(endingMessage)
-    sys.exit() 
-  # if the user chose none of the above, do the following
-  else:
-    print(wrongSpelling)
 
-      
+
 # Main
 while True: 
   current_location = HauntedMansion[row][col]
   # if the user is at the Entrance, do the following
   if current_location == "Entrance":
-    print(welcomeMessage)
+    print(roomsHauntedMansion["Entrance"]["description"])
     print('\n')
   # if the user is at the grand ball room, do the following
   elif current_location == "Grand Ball Room":
-    print(ballroomMessage)
+    print(roomsHauntedMansion["Grand Ball Room"]["description"])
     print('\n')
   # if the user is at the closet, do the following
   elif current_location == "Closet":
-    print(closetMessage)
+    print(roomsHauntedMansion["Closet"]["description"])
     print('\n')
   # if the user is at the master bedroom, do the following
   elif current_location == "Master Bedroom":
-    print(bedroomMessage)
+    print(roomsHauntedMansion["Master Bedroom"]["description"])
     print('\n')
   # if the user is at the rooftop, do the following
   elif current_location == "Rooftop":
-    print(rooftopMessage)
+    print(roomsHauntedMansion["Rooftop"]["description"])
     print('\n')
   # if the user is at the bathroom, do the following
   elif current_location == "Bathroom":
-    print(bathroomMessage)
+    print(roomsHauntedMansion["Bathroom"]["description"])
     print('\n')
   # if the user is at the exit, do the following
   elif current_location == "Exit":
-    print(endingMessage)
+    print(roomsHauntedMansion["Exit"]["description"])
     break
   # if the user is not at any of the locations above, do the following
   else:
@@ -252,3 +249,4 @@ while True:
     print('\n')
   # Main Menu
   mainChoice()
+  movements()
