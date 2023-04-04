@@ -32,13 +32,16 @@ HauntedMansion = [
 # dictionary for actions 
 actionChoice = {
   "walk" : {
-    "message" : "Currently Walking Around!"
+    "message" : "Currently Walking Around!",
+    "description" : "The user will be able to walk around the room. "
   },
   "search" : {
-    "message" : "Searching For Possible Keys!"
+    "message" : "Searching For Possible Keys!",
+    "description" : "The user will be able to search the room. The search results are randomized. "
   },
   "quit" : {
-    "message" : "Thank you for playing. Bye!"
+    "message" : "Thank you for playing. Bye!",
+    "description" : "The game will stop. "
   }
 }
 
@@ -46,31 +49,31 @@ actionChoice = {
 roomsHauntedMansion = {
   "Entrance" : {
     "description" : "Welcome To The Haunted House! You are currently at the Entrance. Your goal is to collect as many items as possible. ",
-    "num_treasure" : "0", 
+    "num_treasure" : "randomized", 
   }, 
   "Grand Ball Room" : {
     "description" : "You are currently in the Grand Ball Room. This is the largest room in this house, maybe you want to explore it. BE CAREFUL!! ",
-    "num_treasure" : "1",
+    "num_treasure" : "randomized",
   },
   "Closet" : {
     "description" : "You are currently in the Closet. This is the smallest room in this house. All of the clothes in the closet... What can I find here? ",
-    "num_treasure" : "1",
+    "num_treasure" : "randomized",
   },
   "Master Bedroom" : {
     "description" : "You are currently in the Master Bedroom. This is where the previous couples stayed before they were never seen ever again... ",
-    "num_treasure" : "2",
+    "num_treasure" : "randomized",
   },
   "Rooftop" : {
     "description" : "You are currently at the Rooftop of this mansion. This is the highest place of this mansion. Be careful NOT to fall down... ",
-    "num_treasure" : "1",
+    "num_treasure" : "randomized",
   },
   "Bathroom" : {
     "description" : "You are currently in the Bathroom. The room of slaughter. Be careful NOT to be the next one... ",
-    "num_treasure" : "3",
+    "num_treasure" : "randomized",
   },
   "Exit" : {
     "description" : "Thank you for playing. Bye! ",
-    "num_treasure" : "1",
+    "num_treasure" : "randomized",
   }
 }
 
@@ -85,19 +88,16 @@ possibleResults = {
   "result7" : "You found a treasure chest with a sword in it. "
   }
 
-# list for the possible items in the treasure box
-treasureBox = ["knife", "sword", "flashlight", "food", "medicine"]
-
 # empty list for inventory, foods, medicines, and weapons
 Inventory = []
 Food = []
 Medicine = []
 
 # messages to be printed on the console 
-askDirection = ("Do you want to go South, North, East, or West now? ")
+askDirection = ("Do you want to go south, north, east, or west now? ")
 answer = ("Sounds good! ")
 action = ("What movement would you like to do? ")
-wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. ")
+wrongMessage = ("Sorry, you cannot move in that direction. Please choose another direction. No capital letters! ")
 wrongSpelling = ("Please only answer yes or no. No capital letters. ")
 endingMessage = ("Thank you for playing. Bye! ")
 leaveMessage = ("Do you want to leave now? ")
@@ -114,130 +114,211 @@ def randomResult():
   # if it randomzied a 0, give the following result
   if result == 0:
     print(possibleResults["result1"])
+    print('\n')
   # if it randomized a 1, give the following result
   elif result == 1:
     print(possibleResults["result6"])
+    print('\n')
     print(congratsMessage)
+    print('\n')
     while True:
       # asks the user if they want to collect the item
       collect = input(collectMessage)
+      print('\n')
       # if the user says yes, do the following, and then break
       if collect == "yes":
         Inventory.append("knife")
         print(Inventory)
+        print('\n')
         break
-      # if the user saya no, do the following, and then break
-      elif collect == "no":
-        print(answer)
-        break
-      # else do the following, and repeat
-      else:
-        print(wrongSpelling)
-  # if it randomized a 2, do the following
-  elif result == 2: 
-    print(possibleResults["result7"])
-    print(congratsMessage)
-    while True:
-      # asks the user if they want to collect it or not
-      collect = input(collectMessage)
-      # if the user says yes, do the following, and then break
-      if collect == "yes":
-        Inventory.append("sword")
-        print(Inventory)
-        break
-      # if the user says no, do the following, and then break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)
-  elif result == 3: 
-    print(possibleResults["result4"])
-    print(congratsMessage)
-    while True:
-      collect = input(collectMessage)
-      if collect == "yes":
-        Food.append("apples")
-        print(Food)
-        break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)
-  elif result == 4:
-    print(possibleResults["result5"])
-    print(congratsMessage)
-    while True: 
-      collect = input(collectMessage)
-      if collect == "yes":
-        Inventory.append("flashlight")
-        print(Inventory)
-        break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)
-  elif result == 5:
-    print(possibleResults["result2"])
-    print(congratsMessage)
-    while True:
-      collect = input(collectMessage)
-      if collect == "yes":
-        Food.append("energy drink")
-        print(Food)
-        break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)  
-  elif result == 6:
-    print(possibleResults["result3"])
-    print(congratsMessage)
-    while True: 
-      collect = input(collectMessage)
-      if collect == "yes":
-        Medicine.append("bandages", "pills")
-        print(Medicine)
-        break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)
-  elif result == 7:
-    print(possibleResults["result1"])
-  elif result == 8:
-    print(possibleResults["result5"])
-    print(congratsMessage)
-    while True: 
-      collect = input(collectMessage)
-      if collect == "yes":
-        Inventory.append("flashlight")
-        print(Inventory)
-        break
-      elif collect == "no":
-        print(answer)
-        break
-      else:
-        print(wrongSpelling)
-  elif result == 9:
-    print(possibleResults["result5"])
-    print(congratsMessage)
-    while True:
-      collect = input(collectMessage)
-      if collect == "yes":
-        Inventory.append("flashlight")
-        print(Inventory)
-        break
+      # else if the user saya no, do the following, and then break
       elif collect == "no":
         print(answer)
         print('\n')
         break
+      # else do the following, and repeat
       else:
         print(wrongSpelling)
+        print('\n')
+  # if it randomized a 2, do the following
+  elif result == 2: 
+    print(possibleResults["result7"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True:
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Inventory.append("sword")
+        print(Inventory)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat  
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 3, do the following
+  elif result == 3: 
+    print(possibleResults["result4"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True:
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Food.append("apples")
+        print(Food)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 4, do the following
+  elif result == 4:
+    print(possibleResults["result5"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True: 
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 5, do the following
+  elif result == 5:
+    print(possibleResults["result2"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True:
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Food.append("energy drink")
+        print(Food)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 6, do the following
+  elif result == 6:
+    print(possibleResults["result3"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True: 
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Medicine.append("bandages", "pills")
+        print(Medicine)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 7, do the following
+  elif result == 7:
+    print(possibleResults["result1"])
+    print('\n')
+  # if it ranfomized a 8, do the following
+  elif result == 8:
+    print(possibleResults["result5"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True: 
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
+  # if it randomized a 9, do the following
+  elif result == 9:
+    print(possibleResults["result5"])
+    print('\n')
+    print(congratsMessage)
+    print('\n')
+    while True:
+      # asks the user if they want to collect it or not
+      collect = input(collectMessage)
+      print('\n')
+      # if the user says yes, do the following, and then break
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        print('\n')
+        break
+      # else if the user says no, do the following, and then break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      # else do the following, and repeat
+      else:
+        print(wrongSpelling)
+        print('\n')
         
 
 def movements():
@@ -247,49 +328,59 @@ def movements():
   """
   global row, col
   # asks for user input 
-  movementChoice = (input(askDirection))
-  print('\n')
-  print(answer)
-  print('\n')
-  # if the user put in North, do the following 
-  if movementChoice == "North":
-    # makes sure the user stays in the map
-    if row == 0:
-      print("You have ran into a wall. ")
-      print('\n')
-      print("Please type in another direction. ")
+  while True:
+    movementChoice = (input(askDirection))
+    print('\n')
+    print(answer)
+    print('\n')
+    # if the user put in North, do the following 
+    if movementChoice == "north":
+      # makes sure the user stays in the map
+      if row == 0:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        row -= 1
+        break
+    # if the user put in South, do the following
+    elif movementChoice == "south":
+      # makes sure the user stays in the map
+      if row == 4:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        row += 1
+        break
+    # if the user put in West, do the following
+    elif movementChoice == "west":
+      # makes sure the user stays in the map
+      if col == 0:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        col -= 1
+        break
+    # if the user put in East, do the following
+    elif movementChoice == "east": 
+      # makes sure the user stays in the map
+      if col == 3:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else: 
+        col += 1
+        break
+    # if the user chose none of the above, do the following
     else:
-      row -= 1
-  # if the user put in South, do the following
-  elif movementChoice == "South":
-    # makes sure the user stays in the map
-    if row == 4:
-      print("You have ran into a wall. ")
+      print(wrongMessage)
       print('\n')
-      print("Please type in another direction. ")
-    else:
-      row += 1
-  # if the user put in West, do the following
-  elif movementChoice == "West":
-    # makes sure the user stays in the map
-    if col == 0:
-      print("You have ran into a wall. ")
-      print('\n')
-      print("Please type in another direction. ")
-    else:
-      col -= 1
-  # if the user put in East, do the following
-  elif movementChoice == "East": 
-    # makes sure the user stays in the map
-    if col == 3:
-      print("You have ran into a wall. ")
-      print('\n')
-      print("Please type in another direction. ")
-    else: 
-      col += 1
-  # if the user chose none of the above, do the following
-  else:
-    print(wrongMessage)
 
 
 def mainChoice():
@@ -298,30 +389,32 @@ def mainChoice():
   this function will asks for the user's action 
   """
   # prints the options for action
-  print("Possible actions: ")
-  for key in actionChoice:
-    print(f"- {key}")
-  actionChoice2 = (input(action))
-  print('\n')
-  # if the user chose walk as their action, do the following
-  if actionChoice2 == "walk":
-    print(actionChoice["walk"]["message"])
-  # if the user chose search as their action, do the following
-  elif actionChoice2 == "search":
-    print(actionChoice["search"]["message"])
+  while True:
+    print("Possible actions: ")
+    for key in actionChoice:
+      print(f"- {key}")
+    actionChoice2 = (input(action))
     print('\n')
-    randomResult()
-    print('\n')
-  # if the user chose quit as their action, do the following
-  elif actionChoice2 == "quit":
-    print(actionChoice["quit"]["message"])
-    sys.exit()
-  # if the user chose none of the above, do the following
-  else:
-    print("walk is the only option right now! No capital letters!")
-    print('\n')
-    input(action)
-  print('\n')
+    # if the user chose walk as their action, do the following
+    if actionChoice2 == "walk":
+      print(actionChoice["walk"]["message"])
+      print('\n')
+      break
+    # if the user chose search as their action, do the following
+    elif actionChoice2 == "search":
+      print(actionChoice["search"]["message"])
+      print('\n')
+      randomResult()
+      print('\n')
+      break
+    # if the user chose quit as their action, do the following
+    elif actionChoice2 == "quit":
+      print(actionChoice["quit"]["message"])
+      sys.exit()
+    # if the user chose none of the above, do the following
+    else:
+      print("No capital letters!")
+      print('\n')
 
 
 # Main
