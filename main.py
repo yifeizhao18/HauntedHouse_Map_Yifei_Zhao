@@ -42,21 +42,21 @@ actionChoice = {
   }
 }
 
-# dictionary for characters 
-possibleCharacter = {
-  "ghost1" : {
-    "description" : "This is the most common ghost in the mansion. You flashlight will be enough to shine them away from you. ",
-    "locationMap" : "[(1,3), (0,1), (3,1), (2,0), (1,2), (3,2), (3,3)]",
-  },
-  "ghost2" : {
-    "description" : "These are a little bit better than the basic ghosts. however, these have lived in the mansion for the longest time. You need to kill them with the knife. GOOD LUCK! ",
-    "locationMap" : "[(0,0), (2,1), (0,2), (0,3), (2,3), (0,4), (2,4)]",
-  },
-  "theGhost" : {
-    "description" : "OH NO!! These are the ghosts you DO NOT want to come across. They can kill you within seconds, and you will not even notice it. Unfortunately, you can only kill them with the sword. ",
-    "locationMap" : "[(1,0), (3,0), (1,1), (0,3), (1,4)]"
-  }
-}
+# # dictionary for characters 
+# possibleCharacter = {
+#   "ghost1" : {
+#     "description" : "This is the most common ghost in the mansion. You flashlight will be enough to shine them away from you. ",
+#     "locationMap" : "[(1,3), (0,1), (3,1), (2,0), (1,2), (3,2), (3,3)]",
+#   },
+#   "ghost2" : {
+#     "description" : "These are a little bit better than the basic ghosts. however, these have lived in the mansion for the longest time. You need to kill them with the knife. GOOD LUCK! ",
+#     "locationMap" : "[(0,0), (2,1), (0,2), (0,3), (2,3), (0,4), (2,4)]",
+#   },
+#   "theGhost" : {
+#     "description" : "OH NO!! These are the ghosts you DO NOT want to come across. They can kill you within seconds, and you will not even notice it. Unfortunately, you can only kill them with the sword. ",
+#     "locationMap" : "[(1,0), (3,0), (1,1), (0,3), (1,4)]"
+#   }
+# }
 
 # dictionary for the objects
 # treasureBox: {
@@ -120,7 +120,6 @@ roomsHauntedMansion = {
 Inventory = []
 Food = []
 Medicine = []
-Weapon = []
 
 # messages to be printed on the console 
 askDirection = ("Do you want to go South, North, East, or West now? ")
@@ -144,8 +143,8 @@ def randomResult():
     while True:
       collect = input(collectMessage)
       if collect == "yes":
-        Weapon.append("knife")
-        print(Weapon)
+        Inventory.append("knife")
+        print(Inventory)
         break
       elif collect == "no":
         print(answer)
@@ -158,8 +157,8 @@ def randomResult():
     while True:
       collect = input(collectMessage)
       if collect == "yes":
-        Weapon.append("sword")
-        print(Weapon)
+        Inventory.append("sword")
+        print(Inventory)
         break
       elif collect == "no":
         print(answer)
@@ -169,72 +168,90 @@ def randomResult():
   elif result == 3: 
     print(possibleResults["result4"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Food.append("apples")
-      print(Food)
-    elif collect == "no":
-      print(answer)
-    else:
-      print(wrongSpelling)
+    while True:
+      collect = input(collectMessage)
+      if collect == "yes":
+        Food.append("apples")
+        print(Food)
+        break
+      elif collect == "no":
+        print(answer)
+        break
+      else:
+        print(wrongSpelling)
   elif result == 4:
     print(possibleResults["result5"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Weapon.append("flashlight")
-      print(Weapon)
-    elif collect == "no":
-      print(answer)
-    else:
-      print(wrongSpelling)
+    while True: 
+      collect = input(collectMessage)
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        break
+      elif collect == "no":
+        print(answer)
+        break
+      else:
+        print(wrongSpelling)
   elif result == 5:
     print(possibleResults["result2"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Food.append("energy drink")
-      print(Food)
-    elif collect == "no":
-      print(answer)
-    else:
-      print(wrongSpelling)  
+    while True:
+      collect = input(collectMessage)
+      if collect == "yes":
+        Food.append("energy drink")
+        print(Food)
+        break
+      elif collect == "no":
+        print(answer)
+        break
+      else:
+        print(wrongSpelling)  
   elif result == 6:
     print(possibleResults["result3"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Medicine.append("bandages", "pills")
-      print(Medicine)
-    elif collect == "no":
-      print(answer)
-    else:
-      print(wrongSpelling)
+    while True: 
+      collect = input(collectMessage)
+      if collect == "yes":
+        Medicine.append("bandages", "pills")
+        print(Medicine)
+        break
+      elif collect == "no":
+        print(answer)
+        break
+      else:
+        print(wrongSpelling)
   elif result == 7:
     print(possibleResults["result1"])
   elif result == 8:
     print(possibleResults["result5"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Weapon.append("flashlight")
-      print(Weapon)
-    elif collect == "no":
-      print(answer)
-    else:
-      print(wrongSpelling)
+    while True: 
+      collect = input(collectMessage)
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        break
+      elif collect == "no":
+        print(answer)
+        break
+      else:
+        print(wrongSpelling)
   elif result == 9:
     print(possibleResults["result5"])
     print(congratsMessage)
-    collect = input(collectMessage)
-    if collect == "yes":
-      Weapon.append("flashlight")
-      print(Weapon)
-    elif collect == "no":
-      print(answer)
-      print('\n')
-    else:
-      print(wrongSpelling)
+    while True:
+      collect = input(collectMessage)
+      if collect == "yes":
+        Inventory.append("flashlight")
+        print(Inventory)
+        break
+      elif collect == "no":
+        print(answer)
+        print('\n')
+        break
+      else:
+        print(wrongSpelling)
       
 
 possibleResults = {
@@ -300,11 +317,11 @@ def movements():
     print(wrongMessage)
 
 
-def treasureChoice():
-  """
-  function for the treasure choices.
-  this will be randomized. 
-  """
+# def treasureChoice():
+#   """
+#   function for the treasure choices.
+#   this will be randomized. 
+#   """
 
 
 def mainChoice():
