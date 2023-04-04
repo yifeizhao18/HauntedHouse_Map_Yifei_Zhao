@@ -12,6 +12,7 @@ This program creates a map.
 The user should not be able to walk off the map.
 When the user is in a room, there will be a message printed to the console. 
 The user will be able to choose which direction to go. 
+Has empty lists that the user will be able to add items into it. 
 """
 ###############################################################################
 # Global Variables & Imports
@@ -33,15 +34,19 @@ HauntedMansion = [
 actionChoice = {
   "walk" : {
     "message" : "Currently Walking Around!",
-    "description" : "The user will be able to walk around the room. "
+    "description" : "You will be able to walk around the room. "
   },
   "search" : {
     "message" : "Searching For Possible Keys!",
-    "description" : "The user will be able to search the room. The search results are randomized. "
+    "description" : "You will be able to search the room. "
   },
   "quit" : {
     "message" : "Thank you for playing. Bye!",
     "description" : "The game will stop. "
+  },
+  "inventory" : {
+    "message" : "These are your current inventories. ",
+    "description" : "If you do not see anything in it, that is because you have not found or collected anything yet. "
   }
 }
 
@@ -397,11 +402,15 @@ def mainChoice():
     print('\n')
     # if the user chose walk as their action, do the following
     if actionChoice2 == "walk":
+      print(actionChoice["walk"]["description"])
+      print('\n')
       print(actionChoice["walk"]["message"])
       print('\n')
       break
     # if the user chose search as their action, do the following
     elif actionChoice2 == "search":
+      print(actionChoice["search"]["description"])
+      print('\n')
       print(actionChoice["search"]["message"])
       print('\n')
       randomResult()
@@ -409,8 +418,22 @@ def mainChoice():
       break
     # if the user chose quit as their action, do the following
     elif actionChoice2 == "quit":
+      print(actionChoice["quit"]["description"])
+      print('\n')
       print(actionChoice["quit"]["message"])
       sys.exit()
+    elif actionChoice2 == "inventory":
+      print(actionChoice["inventory"]["description"])
+      print('\n')
+      print(actionChoice["inventory"]["message"])
+      print('\n')
+      print(Inventory)
+      print('\n')
+      print(Medicine)
+      print('\n')
+      print(Food)
+      print('\n')
+      break
     # if the user chose none of the above, do the following
     else:
       print("No capital letters!")
