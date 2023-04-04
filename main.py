@@ -42,48 +42,6 @@ actionChoice = {
   }
 }
 
-# # dictionary for characters 
-# possibleCharacter = {
-#   "ghost1" : {
-#     "description" : "This is the most common ghost in the mansion. You flashlight will be enough to shine them away from you. ",
-#     "locationMap" : "[(1,3), (0,1), (3,1), (2,0), (1,2), (3,2), (3,3)]",
-#   },
-#   "ghost2" : {
-#     "description" : "These are a little bit better than the basic ghosts. however, these have lived in the mansion for the longest time. You need to kill them with the knife. GOOD LUCK! ",
-#     "locationMap" : "[(0,0), (2,1), (0,2), (0,3), (2,3), (0,4), (2,4)]",
-#   },
-#   "theGhost" : {
-#     "description" : "OH NO!! These are the ghosts you DO NOT want to come across. They can kill you within seconds, and you will not even notice it. Unfortunately, you can only kill them with the sword. ",
-#     "locationMap" : "[(1,0), (3,0), (1,1), (0,3), (1,4)]"
-#   }
-# }
-
-# dictionary for the objects
-# treasureBox: {
-#   "Medicine" : {
-#     "description" : "The user will be able to find medicine to heal themselves from the possible attacks from the ghosts. ",
-#     "possibleItems" : "["bandages", "pills"]",
-#     "bandages" : "This can help with the minimum attack. ",
-#     "pills" : "This can help with stronger attacks. ",
-#   },
-#   "Food" : {
-#     "description" : "The user will be able to find food to gain energy. ",
-#     "possibleItems" : ["water", "foods", "snacks"],
-#     "water" : "This can help with dehydration, but you cannot gain a lot of energy. ",
-#     "foods" : "This can help you gain a lot of energy to keep exploring the house. ",
-#     "snacks" : "This can help you gain some energy. ",
-#   },
-#   "KeyItems" : {
-#     "description" : "The user will be able to find items that are very important in survivng. ",
-#     "possibleItems" : ["knife", "sword", "flashlight"],
-#     "knife" : "This can help you fight ghost2. ",
-#     "sword" : "This can help you fight ghost3. ",
-#     "flashlight" : "This can help you fight ghost1. "
-#   }
-# }
-# list for the possible items in the treasure box
-treasureBox = ["knife", "sword", "flashlight", "food", "medicine"]
-
 # dictionary for the map-tile
 roomsHauntedMansion = {
   "Entrance" : {
@@ -116,6 +74,20 @@ roomsHauntedMansion = {
   }
 }
 
+# possible results when the user chose to search
+possibleResults = {
+  "result1" : "Sorry! There is nothing here. ",
+  "result2" : "You found some energy drink. ",
+  "result3" : "You found a treasure chest with bandages and pills. ",
+  "result4" : "You found some food. ",
+  "result5" : "You found a treasure chest with a flashlight in it. ",
+  "result6" : "You found a treasure chest with a knife in it. ",
+  "result7" : "You found a treasure chest with a sword in it. "
+  }
+
+# list for the possible items in the treasure box
+treasureBox = ["knife", "sword", "flashlight", "food", "medicine"]
+
 # empty list for inventory, foods, medicines, and weapons
 Inventory = []
 Food = []
@@ -134,32 +106,46 @@ collectMessage = ("Do you want to collect it? ")
 
 
 def randomResult():
+  """
+  This function is for randomizing results. 
+  It will randomly give the user a result after they selected to 'search' the room
+  """
   result = random.randint(0,9)
+  # if it randomzied a 0, give the following result
   if result == 0:
     print(possibleResults["result1"])
+  # if it randomized a 1, give the following result
   elif result == 1:
     print(possibleResults["result6"])
     print(congratsMessage)
     while True:
+      # asks the user if they want to collect the item
       collect = input(collectMessage)
+      # if the user says yes, do the following, and then break
       if collect == "yes":
         Inventory.append("knife")
         print(Inventory)
         break
+      # if the user saya no, do the following, and then break
       elif collect == "no":
         print(answer)
         break
+      # else do the following, and repeat
       else:
         print(wrongSpelling)
+  # if it randomized a 2, do the following
   elif result == 2: 
     print(possibleResults["result7"])
     print(congratsMessage)
     while True:
+      # asks the user if they want to collect it or not
       collect = input(collectMessage)
+      # if the user says yes, do the following, and then break
       if collect == "yes":
         Inventory.append("sword")
         print(Inventory)
         break
+      # if the user says no, do the following, and then break
       elif collect == "no":
         print(answer)
         break
@@ -252,18 +238,7 @@ def randomResult():
         break
       else:
         print(wrongSpelling)
-      
-
-possibleResults = {
-  "result1" : "Sorry! There is nothing here. ",
-  "result2" : "You found some energy drink. ",
-  "result3" : "You found a treasure chest with bandages and pills. ",
-  "result4" : "You found some food. ",
-  "result5" : "You found a treasure chest with a flashlight in it. ",
-  "result6" : "You found a treasure chest with a knife in it. ",
-  "result7" : "You found a treasure chest with a sword in it. "
-  }
-
+        
 
 def movements():
   """
@@ -315,13 +290,6 @@ def movements():
   # if the user chose none of the above, do the following
   else:
     print(wrongMessage)
-
-
-# def treasureChoice():
-#   """
-#   function for the treasure choices.
-#   this will be randomized. 
-#   """
 
 
 def mainChoice():

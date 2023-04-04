@@ -27,5 +27,8 @@ add - a dictionary to hold action information
 add - change log
 fix - how room descriptions print in the game
 add - another dictionary (for a character or object)
-add - empty inventory list
-add - a dictionary and a function for randomizing results
+add - empty inventory, food, and medicine list
+add - a dictionary for randomizing results
+add - dictionary for all of the possible results
+add - a function for randomizing results
+update - mainChoice function. Now, walk is not the only option
