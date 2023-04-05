@@ -86,7 +86,7 @@ roomsHauntedMansion = {
 possibleResults = {
   "result1" : "Sorry! There is nothing here. ",
   "result2" : "You found some energy drink. ",
-  "result3" : "You found a treasure chest with bandages and pills. ",
+  "result3" : "You found a treasure chest with bandages. ",
   "result4" : "You found some food. ",
   "result5" : "You found a treasure chest with a flashlight in it. ",
   "result6" : "You found a treasure chest with a knife in it. ",
@@ -257,7 +257,7 @@ def randomResult():
       print('\n')
       # if the user says yes, do the following, and then break
       if collect == "yes":
-        Medicine.append("bandages", "pills")
+        Medicine.append("bandages")
         print(Medicine)
         print('\n')
         break
@@ -422,16 +422,26 @@ def mainChoice():
       print('\n')
       print(actionChoice["quit"]["message"])
       sys.exit()
+    # if the user chose inventory as their action, do the following
     elif actionChoice2 == "inventory":
       print(actionChoice["inventory"]["description"])
       print('\n')
       print(actionChoice["inventory"]["message"])
       print('\n')
-      print(Inventory)
+      print("Inventories: ")
+      for item in Inventory:
+        print(f"- {item}")
+        print('\n')
       print('\n')
-      print(Medicine)
+      print("Medicines: ")
+      for meds in Medicine:
+        print(f"- {meds}")
+        print('\n')
       print('\n')
-      print(Food)
+      print("Foods: ")
+      for food in Food:
+        print(f"- {food}")
+        print('\n')
       print('\n')
       break
     # if the user chose none of the above, do the following
