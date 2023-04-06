@@ -38,3 +38,65 @@ roomsHauntedMansion = {
     "num_treasure" : "randomized",
   }
 }
+
+
+def movements():
+  """
+  movement function that asks for the user input on directions.
+  makes sure the user does not walk off of the map.
+  """
+  global row, col
+  # asks for user input 
+  while True:
+    movementChoice = (input(askDirection))
+    print('\n')
+    print(answer)
+    print('\n')
+    # if the user put in North, do the following 
+    if movementChoice == "north":
+      # makes sure the user stays in the map
+      if row == 0:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        row -= 1
+        break
+    # if the user put in South, do the following
+    elif movementChoice == "south":
+      # makes sure the user stays in the map
+      if row == 4:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        row += 1
+        break
+    # if the user put in West, do the following
+    elif movementChoice == "west":
+      # makes sure the user stays in the map
+      if col == 0:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else:
+        col -= 1
+        break
+    # if the user put in East, do the following
+    elif movementChoice == "east": 
+      # makes sure the user stays in the map
+      if col == 3:
+        print("You have ran into a wall. ")
+        print('\n')
+        print("Please type in another direction. ")
+        print('\n')
+      else: 
+        col += 1
+        break
+    # if the user chose none of the above, do the following
+    else:
+      print(wrongMessage)
+      print('\n')
