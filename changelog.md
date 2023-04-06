@@ -32,3 +32,7 @@ add - dictionary for all of the possible results
 add - a function for randomizing results
 update - mainChoice function. Now, walk is not the only option
 update - messages to be printed on the console
+
+
+v3.0
+Name: RPG: Haunted Mansion - Modules
